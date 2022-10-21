@@ -1,0 +1,21 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "RUS");
+	int x, y;
+	cin >> x >> y;
+	if ((x > -100) && (x < 100) && (y < 0) && (y > -100) && (abs(x) < -y)) {
+		cout << "Да";
+	}
+	else if ((((y == -100) || (y == 0)) || (abs(x) == -y)) && ((x >= -100) && (x <= 100) && (y <= 0) && (y >= -100))) {
+		cout << "На границе";
+	}
+	else {
+		cout << "Нет";
+	}
+}
