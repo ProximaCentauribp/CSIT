@@ -1,0 +1,25 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <algorithm>
+using namespace std;
+
+double f(int x) {
+    if (x < 3) {
+        return pow(x, 2) - 0.3;
+    }
+    else if (x > 5) {
+        return pow(x, 2) + 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+int main() {
+    int a, b, h;
+    cin >> a >> b >> h;
+    for (int i = a; i <= b; i += h) {
+        cout << f(i) << endl;
+    }
+}
