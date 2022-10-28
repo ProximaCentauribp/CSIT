@@ -4,12 +4,14 @@
 #include <algorithm>
 using namespace std;
 
-int f(int n) {
-    return pow((1 + n), 2);
+double f(int n) {
+    return 1. / (pow((1 + n), 2));
 }
 
 int main() {
-    int x;
-    cin >> x;
-    cout << 1. / f(x);
+    int a, b, h;
+    cin >> a >> b >> h;
+    for (int i = a; i <= b; i += h) {
+        cout << f(i) << endl;
+    }
 }
