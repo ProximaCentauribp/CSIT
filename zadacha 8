@@ -1,0 +1,29 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <algorithm>
+using namespace std;
+int f(int x) {
+    int m=0;
+    while(x)
+    {
+        m = m*10+x%10;
+        x /= 10;
+    }
+    return m;
+}
+int main() {
+	int a, z = 0, q;
+    cin >> a;
+    q = a;
+    while (a) {
+        a /= 10;
+        z++;
+    }
+    if (z == 2) {
+        cout << f(q);
+    }
+    else {
+        cout << q;
+    }
+}
