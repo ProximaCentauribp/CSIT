@@ -1,0 +1,15 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <algorithm>
+using namespace std;
+
+int f(int n) {
+    return pow((1 + n), 2);
+}
+
+int main() {
+    int x;
+    cin >> x;
+    cout << 1. / f(x);
+}
