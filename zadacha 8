@@ -1,29 +1,15 @@
 #include <iostream>
-#include <iomanip>
-#include <cmath>
-#include <algorithm>
 using namespace std;
-int f(int x) {
-    int m=0;
-    while(x)
-    {
-        m = m*10+x%10;
-        x /= 10;
+void f(int *a) {
+    if (*a >= 10 && *a <= 99) {
+        cout << *a % 10 << *a / 10;
     }
-    return m;
+    else 
+        cout << *a;
 }
-int main() {
-	int a, z = 0, q;
-    cin >> a;
-    q = a;
-    while (a) {
-        a /= 10;
-        z++;
-    }
-    if (z == 2) {
-        cout << f(q);
-    }
-    else {
-        cout << q;
-    }
+int main()
+{
+    int n; 
+    cin >> n;
+    f(&n);
 }
