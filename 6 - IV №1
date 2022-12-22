@@ -1,0 +1,27 @@
+#include<iostream>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    int** a = new int* [n];
+    int* b = new int[n];
+    for (int i = 0; i < n; i++)
+        a[i] = new int[n];
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            cin >> a[i][j];
+    for (int i = 0; i < n; i++) {
+        int m = -1e9;
+        for (int j = 0; j < n; j++)
+            m = max(m, a[i][j]);
+        b[i] = m;
+    }
+    for (int i = 0; i < n; i++)
+        cout << b[i] << ' ';
+    for (int i = 0; i < n; i++)
+        delete[] a[i];
+    delete[] a;
+    delete[] b;
+}
