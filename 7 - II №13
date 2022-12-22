@@ -1,0 +1,20 @@
+#include<iostream>
+#include<string>
+
+using namespace std;
+ 
+int main() {
+	int i = 0;
+	char c; cin >> c;
+	string s, s0;
+	cin >> s; cin >> s0;
+	while (i < s.size()) {
+		if (s[i] == c) {
+			s.insert(i, s0);
+			i += s0.size();
+		}
+		i++;
+	}
+	cout << s;
+
+}
