@@ -1,0 +1,48 @@
+#include<iostream>
+
+using namespace std;
+
+int main() {
+	cout << "Vvedite razmer massiva NxM ";
+	int n, m; cin >> n >> m;
+	cout << "Kakoe chislo vstavit' ";
+	int c; cin >> c;
+	int** a = new int*[n];
+	for (int i = 0; i < n; i++) {
+		a[i] = new int[2*m];
+	}
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			cin >> a[i][j];
+		}
+	}
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			if (a[j][i] < 0) { //если встречается отрицательное
+				j = 0; //возвращемся к первой строке
+				break;//выходим из цикла
+			}
+			else if (j == n-1) { //если все числа в столбце > 0
+				for (int x = m; x > i; x--) { //поэлементый сдвиг по столбцам
+					for (int y = 0; y < n; y++) {
+						a[y][x] = a[y][x - 1];
+					}
+				}
+				for (int x = 0; x < n; x++) {
+					a[x][i+1] = c; //вставляем элемент
+				}
+				m++; i++; //перешагиваем столбец в который вставили 
+			}
+		}
+	}
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			cout << a[i][j] << " ";
+		}
+		cout << endl;
+	}
+	for (int i = 0; i < n; i++) {
+		delete[] a[i];
+	}
+	delete[] a;
+}
