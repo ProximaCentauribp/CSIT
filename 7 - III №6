@@ -1,0 +1,22 @@
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+int main() {
+  int n; cin >> n;
+  string s, temp, s0;
+  getline(cin,s);
+  for (int i = 0; i < s.size(); i++) {
+    if (isalpha(s[i])) {
+      temp += s[i]; 
+    }
+    else {
+      if (temp.size() == n) {
+        s0 += temp + " ";
+      }
+      temp = "";
+    }
+  }
+  cout << s0;
+}
