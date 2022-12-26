@@ -1,0 +1,23 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "RUS");
+	int k; cin >> k;
+	// рассмотрим с помощью switch возможные варианты
+	switch (k) {
+	case 6: cout << "шестёрка" << endl; break;
+	case 7: cout << "семёрка" << endl; break;
+	case 8: cout << "восьмёрка" << endl; break;
+	case 9: cout << "девятка" << endl; break;
+	case 10: cout << "десятка" << endl; break;
+	case 11: cout << "валет" << endl; break;
+	case 12: cout << "дама" << endl; break;
+	case 13: cout << "король" << endl; break;
+	case 14: cout << "туз" << endl; break;
+	// значение для отсутствия данной карты
+	default: cout << "Нет карты с таким достоинством." << endl; break;
+	}
+}
