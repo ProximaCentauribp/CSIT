@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+#include <fstream> //для файлового ввода-вывода
+
+using namespace std;
+//добавляем входной и выходной поток через файлы
+ifstream in("input.txt");
+ofstream out("output.txt");
+
+struct sotrudnik {
+    //членны-данные
+    string f, i, o;
+    int num, sum, year;
+    //члены-функции
+    void read();
+    void print();
+};
+
+//член-функция для чтения данных типа sotrudnik
+void sotrudnik::read() {
+    in >> f >> i >> o >> num >> sum >> year;
+}
+
+//член-функция для вывода данных типа sotrudnik
+void sotrudnik::print() {
+    out << f << ' ' << i << ' ' << o << ' ' << num << ' ' << sum
+        << ' ' << year << '\n';
+}
+
+int main() {
+    sotrudnik a;
+    //выполняем до маркера окончания файла
+    while (!in.eof()) {
+        //считывем через функцию
+        a.read();
+        if (a.year == 2022) {
+            //выводим через функцию
+            a.print();
+        }
+    }
+    //закрываем файлы
+    in.close();
+    out.close();
+}
