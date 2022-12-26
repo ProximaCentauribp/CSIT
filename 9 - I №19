@@ -1,15 +1,21 @@
-#include<fstream>
-#include<string>
-
+#include <iostream>
+#include <string>
+#include <fstream> //для файлового ввода-вывода
 using namespace std;
 
+//добавляем входной поток через файл
 ifstream in("input.txt");
-ofstream out("output.txt");
+
 
 int main() {
-  string s;
-  while (getline(in, s)) {
-    if (s.size() % 2 == 0)
-      out << s << endl;
-  }
+    //создаем выходной поток через файл
+    ofstream out("output.txt");
+    string s;
+    //выполняем пока считывается строка
+    while (getline(in, s)) {
+        if (s.length() % 2 == 0) out << s << '\n';
+    }
+    //закрываем файлы
+    out.close();
+    in.close();
 }
