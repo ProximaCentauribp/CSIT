@@ -1,0 +1,46 @@
+#include <iostream>
+#include <string>
+#include <cmath> //для извлечения корня
+#include <algorithm> //для функции max
+
+using namespace std;
+
+//создаем структуру
+struct point {
+    double x, y, z;
+};
+
+//функция для нахождения расстояния между 2 точками
+double dlina(point a, point b) {
+    return sqrt((b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y) + (a.z - b.z) * (a.z - b.z));
+}
+
+
+int main() {
+    //в m записываем максимум
+    double m = -1e9;
+    int n; cin >> n;
+    //создаем динамический одномерный массив типа point
+    point* ar = new point[n];
+    //заполняем массив
+    for (int i = 0; i < n; ++i) {
+        cin >> ar[i].x >> ar[i].y >> ar[i].z;
+    }
+    //проходимся по массиву и сравниваем каждую точку со всеми
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            m = max(m, dlina(ar[i], ar[j]));
+        }
+    }
+
+    //проходим еще раз по всем парам чтобы найти координаты точек
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (dlina(ar[i], ar[j]) == m)
+                cout << '\n' << ar[i].x << ' ' << ar[i].y << ' ' << ar[i].z <<
+                '\n' << ar[j].x << ' ' << ar[j].y << ' ' << ar[j].z;
+        }
+    }
+    //очищаем память
+    delete[] ar;
+}
