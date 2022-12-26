@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+#include <iomanip> //для форматирования вывода
+using namespace std;
+
+//передаем по ссылке значения для суммы и кол-ва слагаемых
+void f(double a, double e, int& n, double& s) {
+    //в k считаем знаменатель
+    int k = 3;
+    double el = a / k;
+    //считаем пока очередной член больше e
+    while (abs(el) > e) {
+        s += el; k += 2;
+        el = el * a / k;
+        n++;
+    }
+}
+
+int main() {
+    double e;
+    cin >> e;
+    double a = 0.05;
+    int i = 1;
+    while (a < 0.95 + 1e-9) {
+        //n - кол-во просуммированных слагаемых
+        //s - сумма
+        int n = 0; double s = 1;
+        f(a, e, n, s);
+        //рисуем табличку
+        cout << fixed << i << " " << a << " " << s << " " << n << endl;
+        a += 0.1;
+    }
+}
