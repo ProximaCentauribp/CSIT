@@ -1,13 +1,19 @@
-#include<iostream>
-#include <algorithm>
-
+#include <iostream>
+#include <string>
+#include <iomanip> //для форматирования вывода
 using namespace std;
 
 int main() {
-    int n; cin >> n;
-    double s = 0;
-    for (int i = 1; i <= n; i++) {
-        s += 1. / (pow(5, i) + pow(4, i + 1));
+    double e;
+    cin >> e;
+    double s = 0; //в s считаем сумму 
+    //в k1 и k2 считаем слагаемые в дроби
+    double k1 = 5, k2 = 16, x = 1 / (k1 + k2);
+    //считаем пока очередной член больше e
+    while (abs(x) > e) {
+        s += x;
+        k1 *= 5; k2 *= 4; x = 1 / (k1 + k2);
     }
-    cout << s;
+    //используеи манипулятор для форматироания выходного потока
+    cout << fixed << setprecision(8) << s;
 }
