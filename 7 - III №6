@@ -4,19 +4,20 @@
 using namespace std;
 
 int main() {
-  int n; cin >> n;
-  string s, temp, s0;
-  getline(cin,s);
-  for (int i = 0; i < s.size(); i++) {
-    if (isalpha(s[i])) {
-      temp += s[i]; 
+    int n; cin >> n;
+    string s, temp, s0;
+    getline(cin, s); // ввод строки через getline, т.к. у нас осмысленный текст
+    for (int i = 0; i < s.size() + 1; i++) {
+        if (isalpha(s[i])) {
+            temp += s[i];
+        }
+        else {
+            // добавляем нужные значения в строку
+            if (temp.size() == n) {
+                s0 += temp + " ";
+            }
+            temp = "";
+        }
     }
-    else {
-      if (temp.size() == n) {
-        s0 += temp + " ";
-      }
-      temp = "";
-    }
-  }
-  cout << s0;
+    cout << s0;
 }
