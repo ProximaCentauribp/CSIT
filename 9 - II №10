@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+#include <fstream> //для файлового ввода-вывода
+using namespace std;
+
+//добавляем входной поток через файл
+ifstream f("f.txt");
+
+
+int main() {
+    //создаем выходные потоки через файлы
+    ofstream g("g.txt");
+    ofstream h("h.txt");
+    char c;
+    //выполняем пока считывается строка
+    while (f >> c) {
+        //проверяем является ли знаком препинания
+        if (ispunct(c)) {
+            g << c;
+        }
+        else {
+            h << c;
+        }
+    }
+    //закрываем файлы
+    f.close();
+    g.close();
+    h.close();
+}
