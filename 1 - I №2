@@ -1,13 +1,15 @@
 #include <iostream>
 #include <cmath>
-#include <algorithm>
-#include <iomanip>
+#include <iomanip> // импортируем манипулятор
 
 using namespace std;
 
 int main()
 {
-    int x, y;
+    double x, y;
     cin >> x >> y;
+    // использем мунипулятор для форматирования
+    // входного потока
+    cout << fixed << setprecision(10);
     cout << exp(-x) - cos(x) + sin(2 * x * y);
 }
