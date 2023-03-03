@@ -1,0 +1,29 @@
+#include<iostream>
+#include<fstream>
+
+using namespace std;
+
+int main() {
+	int n; cin >> n;
+	int x;
+	ofstream fout("txt.bin", ios_base::binary); //открываем файл как бинарный
+	ifstream fin("txt.bin", ios_base::binary);
+	for (int i = 0; i < n; i++) { //заполняем файл последовательностью
+		cin >> x;
+		fout.write((char*)&x, sizeof(int)); //преобразовываем ссылку на "х" к указателю на char
+	}
+	fout.close(); //закрываем файл для записи
+ 
+  //почему не while(fin.eof())? потому что иначе дублируется
+	//последнее выведенное значение
+	
+	while (true) {
+		fin.read((char*)&x, sizeof(int));
+		if (fin.eof())
+			break;
+		else if (x % 2 == 0)
+			cout << x << " ";
+		
+	}
+	fin.close();
+}
