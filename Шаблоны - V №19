@@ -1,0 +1,44 @@
+#include<iostream>
+
+using namespace std;
+//функция ввода массива
+template<typename T> //шаблон с типом данных Т
+void input(T** ar, int &n, int &m) { //передаю массив по указателю
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < m; j++)
+			ar[i][j] = 1;
+}
+//функция вывода массива в нужном формате
+template<typename T>
+void task(T** ar, int &n, int &m) {
+	for (int i = 0; i < n; i++) {
+		if (i % 2 == 0) { //если строка четная(нумерация с 0!) ->
+			int j;
+			for (j = 0; j < m - 1; j++) // -> то выводим строку без последнего символа
+				cout << ar[i][j];
+			cout << endl;
+			for (j = 0; j < m - 2; j++) //выводим m-2 пробелов чтобы ->
+				cout << ' ';
+			cout << ar[i][m - 1] << endl; // -> вывести m-1 символ под верхней строчкой
+		}
+		if (i % 2 != 0) { //для нечетной строки
+			int j;
+			for (j = m - 1; j > 0; j--) //выводим строку слева направо, но задом наперед
+				cout << ar[i][j];
+			cout << endl << ar[i][m-1] << endl; //выводим последний символ у левого сгиба змейки
+		}
+	}
+}
+
+
+int main() {
+
+	int n, m;
+	cin >> n >> m;
+	int** ar = new int *[n];
+	for (int i = 0; i < n; i++)
+		ar[i] = new int[m];
+	input(ar, n, m);
+	task(ar, n, m);
+
+}
