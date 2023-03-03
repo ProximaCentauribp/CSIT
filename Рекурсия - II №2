@@ -1,1 +1,15 @@
+#include<iostream>
 
+using namespace std;
+
+double f(int n) {
+
+	if (n == 1) return 5;
+	return f(n - 1) / (n * n + n + 1);
+
+}
+
+int main() {
+	int n; cin >> n;
+	cout << f(n);
+}
