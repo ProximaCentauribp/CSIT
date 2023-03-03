@@ -1,0 +1,37 @@
+#include<iostream>
+
+using namespace std;
+ 
+float f(float x) {
+	if (x + 2 <= 1) return x * x;
+	if (x + 2 > 1 && x + 2 < 10) return 1 / (x + 2);
+	if (x + 2 >= 10) return x + 2;
+}
+
+void f(float x, float &y) {
+	if (x + 2 <= 1) cout << x << "\t" << x * x;
+	if (x + 2 > 1 && x + 2 < 10) cout << x << "\t" << 1 / (x + 2);
+	if (x + 2 >= 10) cout << x << "\t" << x + 2;
+}
+
+int main() {
+	float a, b, h;
+	cin >> a >> b >> h;
+	cout << "a = " << a << " b = " << b << " h = " << h << endl;
+	cout << "x\t" << "y" << endl;
+ 
+	//если прогнать прогу через отладчик, с заходом(F11), 
+	//будет видно что в одном случае вызывается одна ф-ия
+	//во втором случае другая ф-ия, хотя названия у них одинаковые
+ 
+	for (float i = a; i <= b; i += h) {
+		cout << i << "\t" << f(i) << endl;
+	}
+	cout << "\n\nx\t" << "y" << endl;
+	for (float i = a; i <= b; i += h) {
+		f(i, b);
+		cout << "\t" << endl;
+	}
+
+
+}
