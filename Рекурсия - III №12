@@ -1,0 +1,33 @@
+#include<iostream>
+
+/*программа выводит рандомное число в конце работы,
+не знаю почему и как фиксить*/
+
+using namespace std;
+
+int f1(int n, int zvezd, int &k, int&c) {
+	while (k < c/2) { //выводим первую половину картинки
+		for (int i = 0; i < zvezd / 2; i++) cout << '*'; //всего звезд в строке четное кол-во, значит слева полвина ->
+		for (int i = 0; i < n; i++) cout << ' ';
+		for (int i = 0; i < zvezd / 2; i++) cout << '*'; // -> и справа вторая половина
+		cout << endl;
+		k++;
+		return f1(n - 2, zvezd + 2, k, c);
+	}
+
+	while (k <= c) { //выводим вторую половину картинки
+		for (int i = 0; i < zvezd / 2; i++) cout << '*';
+		for (int i = 0; i < n; i++) cout << ' ';
+		for (int i = 0; i < zvezd / 2; i++) cout << '*';
+		cout << endl;
+		k++;
+		return f1(n + 2, zvezd - 2, k,c);
+	}
+}
+
+int main() {
+
+	int n; cin >> n;
+	int c = n + 1, k = 0;
+	cout << f1(n, 2, k, c);
+}
